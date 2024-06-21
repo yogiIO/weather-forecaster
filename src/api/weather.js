@@ -3,10 +3,10 @@ import axios from "axios";
 
 const API_KEY = 'ea531345a6eb9cdeb923b6091d3f5f81'
 
-export const useWeather = (request) => useQuery({queryKey: [request], queryFn: (request) => handler(request)})
+export const useWeather = (cityName) => useQuery({queryKey: [cityName], queryFn: () => handler(cityName), retry: false})
 
-async function handler(request) {
-    const city = request.queryKey
+async function handler(cityName) {
+    const city = cityName
     try {
         const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`)
         return response.data
