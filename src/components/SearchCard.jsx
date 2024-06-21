@@ -26,7 +26,7 @@ export default function SearchCard() {
     }
     const { isPending, error, data } = useWeather(cityName);
     return (
-        <div className=" flex flex-col max-w-[80%] m-auto p-[24px] rounded-2xl bg-transparent backdrop-blur-[6px] gap-[12px] min-h-[500px]">
+        <div className=" flex flex-col max-w-[80%] m-auto p-[24px] rounded-2xl bg-transparent backdrop-blur-[40px] gap-[12px] min-h-[500px]">
             <div className=" text-[#fff] text-[24px] font-semibold text-center">
                 Weather Forecaster
             </div>
