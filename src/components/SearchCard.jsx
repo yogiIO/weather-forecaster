@@ -26,7 +26,7 @@ export default function SearchCard() {
     }, [])
     const { isPending, error, data } = useWeather(cityName);
     return (
-        <div className=" flex flex-col max-w-[80%] m-auto p-[24px] rounded-2xl bg-transparent backdrop-blur-[40px] gap-[12px] min-h-[500px] max-h-max">
+        <div className="custom-container max-w-[80%] m-auto p-[24px] rounded-2xl bg-transparent backdrop-blur-[40px] gap-[12px] min-h-[500px] max-h-max">
             <div className=" text-[#fff] text-[24px] font-semibold text-center">
                 Weather Forecaster
             </div>
@@ -49,7 +49,7 @@ export default function SearchCard() {
                 </div>
             )}
             {data && !isPending && !error && (
-                <div className=" grid grid-cols-2 text-[#fff] text-[16px] font-semibold flex-1 h-full">
+                <div className=" grid grid-cols-2 text-[#fff] text-[16px] font-semiboldh-full">
                     <div className="flex items-center justify-start">City Name:</div>
                     <div className="flex items-center justify-start">{data.name}</div>
                     <div className="flex items-center justify-start">Temprature:</div>
