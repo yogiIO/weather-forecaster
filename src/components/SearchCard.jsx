@@ -1,6 +1,6 @@
 import { Input, Spin } from "antd";
 import { useWeather } from "../api/weather";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import styled from "styled-components";
 
 const { Search } = Input;
@@ -21,12 +21,12 @@ const StyledSearchComponent = styled(Search)`
 export default function SearchCard() {
     const [cityName, setCityName] = useState("Dehradun");
 
-    function onSearch(val) {
-        setCityName(val);
-    }
+    const onSearch = useCallback((val) =>{
+        return setCityName(val);
+    }, [])
     const { isPending, error, data } = useWeather(cityName);
     return (
-        <div className=" flex flex-col max-w-[80%] m-auto p-[24px] rounded-2xl bg-transparent backdrop-blur-[40px] gap-[12px] min-h-[500px]">
+        <div className=" flex flex-col max-w-[80%] m-auto p-[24px] rounded-2xl bg-transparent backdrop-blur-[40px] gap-[12px] min-h-[500px] max-h-max">
             <div className=" text-[#fff] text-[24px] font-semibold text-center">
                 Weather Forecaster
             </div>
@@ -49,7 +49,7 @@ export default function SearchCard() {
                 </div>
             )}
             {data && !isPending && !error && (
-                <div className=" grid grid-cols-2 text-[#fff] text-[16px] font-semibold flex-1">
+                <div className=" grid grid-cols-2 text-[#fff] text-[16px] font-semibold flex-1 h-full">
                     <div className="flex items-center justify-start">City Name:</div>
                     <div className="flex items-center justify-start">{data.name}</div>
                     <div className="flex items-center justify-start">Temprature:</div>
